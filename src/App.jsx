@@ -12,10 +12,30 @@ const App = () => {
     {
       path: "/",
       element: <HomeLayout />,
-    },
-    {
-      path: "/about",
-      element: <About />,
+      errorElement: <Error />,
+      children: [
+        {
+          index: true,
+          element: <Landing />,
+        },
+        {
+          path: "about",
+          element: <About />,
+        },
+        {
+          path: "newsletter",
+          element: <NewsLetter />,
+        },
+
+        {
+          path: "error",
+          element: <Error />,
+        },
+        {
+          path: "cocktail",
+          element: <Cocktail />,
+        },
+      ],
     },
   ]);
   return <RouterProvider router={Router} />;

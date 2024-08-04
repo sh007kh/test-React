@@ -6,7 +6,9 @@ import {
   Cocktail,
   NewsLetter,
   HomeLayout,
+  SingleError,
 } from "./pages";
+import { Loader as LandingLoader } from "./pages/Landing";
 const App = () => {
   const Router = createBrowserRouter([
     {
@@ -17,6 +19,8 @@ const App = () => {
         {
           index: true,
           element: <Landing />,
+          errorElement: <SingleError />,
+          loader: LandingLoader,
         },
         {
           path: "about",

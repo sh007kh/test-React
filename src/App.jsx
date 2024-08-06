@@ -9,6 +9,7 @@ import {
   SingleError,
 } from "./pages";
 import { Loader as LandingLoader } from "./pages/Landing";
+import { Loader as singleCocktailLoader } from "./pages/Cocktail";
 const App = () => {
   const Router = createBrowserRouter([
     {
@@ -36,7 +37,9 @@ const App = () => {
           element: <Error />,
         },
         {
-          path: "cocktail",
+          path: "cocktail/:id",
+          errorElement: <SingleError />,
+          loader: singleCocktailLoader,
           element: <Cocktail />,
         },
       ],

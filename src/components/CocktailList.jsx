@@ -1,5 +1,6 @@
 import React from "react";
 import { Cocktail } from "../pages";
+import CocktailCard from "./CocktailCard";
 
 const CocktailList = ({ drinks }) => {
   if (!drinks) {
@@ -17,11 +18,11 @@ const CocktailList = ({ drinks }) => {
     };
   });
   return (
-    <>
+    <section className="grid gap-4 lg:grid-cols-[repeat(auto-fill,minmax(300px,1fr))] lg:gap-4">
       {formattedDrink.map((item) => {
-        return <Cocktail key={item.id} {...item} />;
+        return <CocktailCard key={item.id} {...item} />;
       })}
-    </>
+    </section>
   );
 };
 

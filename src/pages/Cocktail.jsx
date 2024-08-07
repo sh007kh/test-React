@@ -1,25 +1,26 @@
 import axios from "axios";
 import React from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, Navigate, useLoaderData } from "react-router-dom";
 const singleCocktailUrl =
   "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=";
-export const Loader = async ({ params }) => {
+export const loader = async ({ params }) => {
   const { id } = params;
-  const response = await axios.get(`${singleCocktailUrl}${id}`);
-  const data = response.data;
+  const { data } = await axios.get(`${singleCocktailUrl}${id}`);
   return { id, data };
 };
 const Cocktail = () => {
   const { id, data } = useLoaderData();
+  // if (!data) return <Navigate to="/" />;
+  // console.log(data);
+  if (!data.drinks) return <Navigate to="/" />;
+
   const singleDrink = data.drinks[0];
-  console.log(singleDrink);
 
   const validIngredients = Object.keys(singleDrink)
     .filter(
       (key) => key.startsWith("strIngredient") && singleDrink[key] !== null
     )
     .map((key) => singleDrink[key]);
-  console.log(validIngredients);
 
   const {
     strDrinkThumb: image,
@@ -37,7 +38,7 @@ const Cocktail = () => {
         </Link>
         <h1 className="title">{name}</h1>
       </header>
-      <article className="drink">
+      <article className="drink lg:grid lg:grid-cols-[2fr,3fr] lg:items-center lg:gap-16">
         <img src={image} alt={name} className="" />
         <div className="drink-info flex flex-col justify-start gap-4 mt-4">
           <p className="text-xl ">

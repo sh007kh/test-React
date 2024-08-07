@@ -11,7 +11,11 @@ const CocktailCard = ({ id, name, image, info, glass }) => {
         <h3 className="font-bold lg:text-3xl">{name}</h3>
         <h4>{glass}</h4>
         <p className="text-gray-400">{info}</p>
-        <Link to={`/cocktail/${id}`} className="btn self-start">
+        <Link
+          to={`/
+          cocktail/${id}`}
+          className="btn self-start"
+        >
           details
         </Link>
       </div>

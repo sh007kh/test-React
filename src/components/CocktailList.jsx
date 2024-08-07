@@ -1,5 +1,4 @@
 import React from "react";
-import { Cocktail } from "../pages";
 import CocktailCard from "./CocktailCard";
 
 const CocktailList = ({ drinks }) => {
